@@ -14,3 +14,4 @@ dlings-test-*
 *.o
 *.obj
 *.lst
+*.selections.json

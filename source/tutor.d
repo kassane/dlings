@@ -70,8 +70,8 @@ auto run(Flag!"interactive" interactive = No.interactive)(immutable Exercise exe
 
 	/// compiler arguments
 	immutable args = [
-		Exercise.Type.compile: ["dmd", "-color=on", "-run"],
-		Exercise.Type.test: ["dmd", "-color=on", "-unittest", "-main", "-run"],
+		Exercise.Type.compile: ["ldmd2", "-color=on", "-run"],
+		Exercise.Type.test: ["ldmd2", "-color=on", "-unittest", "-main", "-run"],
 	];
 
 
@@ -82,8 +82,8 @@ auto run(Flag!"interactive" interactive = No.interactive)(immutable Exercise exe
 	}
 
 	debug with(exercise) infof("compiling with '%-(%s %)'", args[type] ~ path);
-	const dmd = execute(args[exercise.type] ~ exercise.path);
-	const compiled = dmd.status == 0;
+	const ldmd2 = execute(args[exercise.type] ~ exercise.path);
+	const compiled = ldmd2.status == 0;
 
 	// Program compiled successfully!
 	// Output:
@@ -96,7 +96,7 @@ auto run(Flag!"interactive" interactive = No.interactive)(immutable Exercise exe
 	(
 		compiled ? header[exercise.type].success : header[exercise.type].failure,
 		separator,
-		dmd.output,
+		ldmd2.output,
 	);
 
 
